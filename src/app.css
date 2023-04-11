@@ -1,0 +1,267 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.btnCloseModal {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+label,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.singleEmotion {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+#taskTime {
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: height 0.25s ease;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+
+.card {
+  padding: 2em;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  background-color: #1a1a1a;
+  height: 3rem;
+  border-radius: 8px;
+  border: 0;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 0.4rem;
+  font-size: 16px;
+}
+
+input::placeholder {
+  font-size: 16px;
+}
+
+textarea {
+  background-color: #1a1a1a;
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  width: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+textarea::placeholder {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.wrapperModal {
+  background-color: #242424;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputError {
+  border: 1px solid red;
+}
+
+#divider {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 100%;
+  width: 2px;
+  display: absolute;
+  top: 10%;
+  left: 50%;
+}
+
+.journal {
+  position: relative;
+  background-color: #1a1a1a;
+  height: fit-content;
+  border-radius: 8px;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.description {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-right: 0.5rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.vote {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: "Itim", cursive;
+  margin: 0;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.navbar {
+  background-color: #242424;
+}
+
+.checkbox {
+  background-color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+
+  .btnCloseModal {
+    color: #213547;
+  }
+
+  .checkbox {
+    background-color: #f0f0f0;
+  }
+
+  label,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #213547;
+  }
+
+  .navbar {
+    background-color: #fff;
+  }
+
+  #divider {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f0f0f0;
+  }
+
+  input {
+    background-color: #f0f0f0;
+  }
+
+  .journal {
+    background-color: #f0f0f0;
+  }
+
+  textarea {
+    background-color: #f0f0f0;
+  }
+
+  .vote {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .wrapperModal {
+    background-color: #ffffff;
+  }
+
+  h1 {
+    color: #213547;
+  }
+
+  .singleEmotion {
+    color: #213547;
+  }
+
+  .description {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .vote {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
