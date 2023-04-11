@@ -219,4 +219,9 @@
 	#btnSave {
 		width: min-content;
 	}
+
+	.wrapperFinalButton {
+		display: flex;
+		gap: 1rem;
+	}
 </style>
