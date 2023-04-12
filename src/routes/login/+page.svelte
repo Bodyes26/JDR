@@ -1,9 +1,8 @@
 <script>
 	import { currentUser, pb } from '$lib/pocketbase';
 	import { goto } from '$app/navigation';
-	import { Hr } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
-	import { Input } from 'flowbite-svelte';
+	import { Input, Hr, Button } from 'flowbite-svelte';
 	let mail;
 	let password;
 	let confirmPassword;
@@ -106,16 +105,20 @@
 	}
 </script>
 
-<div id="bigBoxLogin">
-	<h1>Journaling done right</h1>
-	<div class="wrapperLogin">
-		<form class="formLogin" on:submit|preventDefault id="formSign">
+<div class="w-full mt-24">
+	<h1 class="w-full text-center">Journaling done right</h1>
+	<div class="flex justify-center">
+		<form
+			class="flex flex-col justify-center items-center py-4 gap-2 w-3/5"
+			on:submit|preventDefault
+			id="formSign"
+		>
 			{#if signup}
 				<Input type="text" name="name" id="name" placeholder="Name" bind:value={name} />
 			{/if}
 			<Input type="email" name="email" id="email" placeholder="Email" bind:value={mail} />
 			{#if signup}
-				<div class="wrapperPasswords">
+				<div class="flex gap-4 w-full">
 					<Input
 						type="password"
 						name="password"
@@ -141,57 +144,15 @@
 				/>
 			{/if}
 			<Hr class="my-8" height="h-px" />
-			<div class="buttons">
+			<div class="flex gap-4 w-full justify-center">
 				{#if signup}
-					<button type="reset" on:click={clear}>Clear</button>
-					<button on:click={signUp}>Sign Up</button>
+					<Button color="alternative" type="reset" on:click={clear}>Clear</Button>
+					<Button on:click={signUp}>Sign Up</Button>
 				{:else}
-					<button on:click={() => login()}>Sign In</button>
-					<button on:click={startSignUp}>Sign Up</button>
+					<Button on:click={() => login()}>Sign In</Button>
+					<Button color="alternative" on:click={startSignUp}>Sign Up</Button>
 				{/if}
 			</div>
 		</form>
 	</div>
 </div>
-
-<style>
-	.formLogin {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		border-radius: 10px;
-		width: 60%;
-		gap: 0.5rem;
-	}
-
-	h1 {
-		text-align: center;
-		width: 100%;
-	}
-
-	.wrapperPasswords {
-		display: flex;
-		width: calc(100% + 1.4rem);
-		gap: 1rem;
-	}
-
-	.wrapperLogin {
-		display: flex;
-		justify-content: center;
-	}
-
-	.buttons {
-		display: flex;
-		gap: 1rem;
-		width: 100%;
-		justify-content: center;
-	}
-
-	#bigBoxLogin {
-		width: 100%;
-		margin-top: 4rem;
-	}
-</style>

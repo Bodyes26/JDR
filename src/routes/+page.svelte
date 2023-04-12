@@ -8,7 +8,7 @@
 	import ModalNewJournal from './modalNewJournal.svelte';
 	import ModalNewTask from './modalNewTask.svelte';
 	import ModalModifyTask from './modalModifyTask.svelte';
-	import { Button, Modal, Label, Navbar, NavBrand, NavUl, NavHamburger } from 'flowbite-svelte';
+	import { Button, Modal } from 'flowbite-svelte';
 
 	onMount(() => {
 		if (!$currentUser) {
@@ -37,26 +37,94 @@
 	<div class="flex gap-4 mt-4 mx-8 flex-wrap">
 		<div class="wrapperTask">
 			<h3>Tasks</h3>
-			<Button on:click={() => (showTaskModal = true)}>+ new Task</Button>
-			<div class="tasks">
+			<Button color="alternative" on:click={() => (showTaskModal = true)}
+				><svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<title />
+
+					<g id="Complete">
+						<g data-name="add" id="add-2">
+							<g>
+								<line
+									fill="none"
+									stroke="#000000"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									x1="12"
+									x2="12"
+									y1="19"
+									y2="5"
+								/>
+
+								<line
+									fill="none"
+									stroke="#000000"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									x1="5"
+									x2="19"
+									y1="12"
+									y2="12"
+								/>
+							</g>
+						</g>
+					</g>
+				</svg> new Task
+			</Button>
+			<div class="w-full overflow-auto">
 				<Tasks on:modifyTask={showModifyTaskModal} />
 			</div>
 		</div>
 		<div class="wrapperJournal">
 			<h3>Journal</h3>
-			<Button on:click={() => (showJournalModal = true)}>+ new Journal</Button>
+			<Button color="alternative" on:click={() => (showJournalModal = true)}>
+				<svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<title />
+
+					<g id="Complete">
+						<g data-name="add" id="add-2">
+							<g>
+								<line
+									fill="none"
+									stroke="#000000"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									x1="12"
+									x2="12"
+									y1="19"
+									y2="5"
+								/>
+
+								<line
+									fill="none"
+									stroke="#000000"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									x1="5"
+									x2="19"
+									y1="12"
+									y2="12"
+								/>
+							</g>
+						</g>
+					</g>
+				</svg> new Journal
+			</Button>
 			<Journal />
 		</div>
 	</div>
 </div>
 
-<Modal title="New Task" bind:open={showTaskModal} autoclose={false} class="w-full">
+<Modal bind:open={showTaskModal} autoclose={false} class="w-full">
 	<ModalNewTask />
 </Modal>
 <Modal bind:open={showJournalModal} autoclose={false} class="w-full">
 	<ModalNewJournal />
 </Modal>
-<Modal title="Modify Task" bind:open={showModalModifyTask} autoclose={false} class="w-full">
+<Modal bind:open={showModalModifyTask} autoclose={false} class="w-full">
 	<ModalModifyTask
 		taskTitle={modifyTaskTitle}
 		taskDescription={modifyTaskDesc}
@@ -83,10 +151,5 @@
 		justify-content: flex-start;
 		height: calc(100vh - 7rem);
 		width: 49%;
-	}
-
-	.tasks {
-		overflow: auto;
-		width: 100%;
 	}
 </style>
