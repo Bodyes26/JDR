@@ -105,22 +105,48 @@
 	}
 </script>
 
-<h1>Journaling done right</h1>
-<div class="wrapperLogin">
-	<form class="formLogin" on:submit|preventDefault id="formSign">
-		{#if signup}
-			<input type="text" name="name" id="name" placeholder="Name" bind:value={name} class="input" />
-		{/if}
-		<input
-			type="email"
-			name="email"
-			id="email"
-			placeholder="Email"
-			bind:value={mail}
-			class="input"
-		/>
-		{#if signup}
-			<div class="wrapperPasswords">
+<div id="bigBoxLogin">
+	<h1>Journaling done right</h1>
+	<div class="wrapperLogin">
+		<form class="formLogin" on:submit|preventDefault id="formSign">
+			{#if signup}
+				<input
+					type="text"
+					name="name"
+					id="name"
+					placeholder="Name"
+					bind:value={name}
+					class="input"
+				/>
+			{/if}
+			<input
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Email"
+				bind:value={mail}
+				class="input"
+			/>
+			{#if signup}
+				<div class="wrapperPasswords">
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Password"
+						bind:value={password}
+						class="input"
+					/>
+					<input
+						type="password"
+						name="confirmPassword"
+						id="confirmPassword"
+						placeholder="confirm password"
+						bind:value={confirmPassword}
+						class="input"
+					/>
+				</div>
+			{:else}
 				<input
 					type="password"
 					name="password"
@@ -129,36 +155,19 @@
 					bind:value={password}
 					class="input"
 				/>
-				<input
-					type="password"
-					name="confirmPassword"
-					id="confirmPassword"
-					placeholder="confirm password"
-					bind:value={confirmPassword}
-					class="input"
-				/>
-			</div>
-		{:else}
-			<input
-				type="password"
-				name="password"
-				id="password"
-				placeholder="Password"
-				bind:value={password}
-				class="input"
-			/>
-		{/if}
-		<hr />
-		<div class="buttons">
-			{#if signup}
-				<button type="reset" on:click={clear}>Clear</button>
-				<button on:click={signUp}>Sign Up</button>
-			{:else}
-				<button on:click={() => login()}>Sign In</button>
-				<button on:click={startSignUp}>Sign Up</button>
 			{/if}
-		</div>
-	</form>
+			<hr />
+			<div class="buttons">
+				{#if signup}
+					<button type="reset" on:click={clear}>Clear</button>
+					<button on:click={signUp}>Sign Up</button>
+				{:else}
+					<button on:click={() => login()}>Sign In</button>
+					<button on:click={startSignUp}>Sign Up</button>
+				{/if}
+			</div>
+		</form>
+	</div>
 </div>
 
 <style>
@@ -193,6 +202,7 @@
 
 	h1 {
 		text-align: center;
+		width: 100%;
 	}
 
 	.wrapperPasswords {
@@ -211,5 +221,10 @@
 		gap: 1rem;
 		width: 100%;
 		justify-content: center;
+	}
+
+	#bigBoxLogin {
+		width: 100%;
+		margin-top: 4rem;
 	}
 </style>

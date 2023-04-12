@@ -15,6 +15,7 @@
 	export let popup = writable();
 	function signOut() {
 		pb.authStore.clear();
+		open('/login', '_self');
 	}
 	async function update() {
 		try {
