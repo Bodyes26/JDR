@@ -1,8 +1,9 @@
 <script>
 	import { currentUser, pb } from '$lib/pocketbase';
 	import { goto } from '$app/navigation';
-
+	import { Hr } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
+	import { Input } from 'flowbite-svelte';
 	let mail;
 	let password;
 	let confirmPassword;
@@ -110,53 +111,36 @@
 	<div class="wrapperLogin">
 		<form class="formLogin" on:submit|preventDefault id="formSign">
 			{#if signup}
-				<input
-					type="text"
-					name="name"
-					id="name"
-					placeholder="Name"
-					bind:value={name}
-					class="input"
-				/>
+				<Input type="text" name="name" id="name" placeholder="Name" bind:value={name} />
 			{/if}
-			<input
-				type="email"
-				name="email"
-				id="email"
-				placeholder="Email"
-				bind:value={mail}
-				class="input"
-			/>
+			<Input type="email" name="email" id="email" placeholder="Email" bind:value={mail} />
 			{#if signup}
 				<div class="wrapperPasswords">
-					<input
+					<Input
 						type="password"
 						name="password"
 						id="password"
 						placeholder="Password"
 						bind:value={password}
-						class="input"
 					/>
-					<input
+					<Input
 						type="password"
 						name="confirmPassword"
 						id="confirmPassword"
 						placeholder="confirm password"
 						bind:value={confirmPassword}
-						class="input"
 					/>
 				</div>
 			{:else}
-				<input
+				<Input
 					type="password"
 					name="password"
 					id="password"
 					placeholder="Password"
 					bind:value={password}
-					class="input"
 				/>
 			{/if}
-			<hr />
+			<Hr class="my-8" height="h-px" />
 			<div class="buttons">
 				{#if signup}
 					<button type="reset" on:click={clear}>Clear</button>
@@ -180,24 +164,7 @@
 		padding-bottom: 1rem;
 		border-radius: 10px;
 		width: 60%;
-	}
-
-	hr {
-		border-top: 1px solid #bbb;
-		width: 100%;
-	}
-
-	.input {
-		height: 3rem;
-		border-radius: 8px;
-		border: 0;
-		padding-left: 1rem;
-		padding-right: 0.4rem;
-		margin-bottom: 1rem;
-	}
-
-	.input::placeholder {
-		font-size: 16px;
+		gap: 0.5rem;
 	}
 
 	h1 {

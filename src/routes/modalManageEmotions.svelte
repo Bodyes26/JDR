@@ -1,8 +1,8 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	import { currentUser, pb } from '$lib/pocketbase';
-	import { Button, Dropdown, DropdownItem, Chevron } from 'flowbite-svelte';
-	import CloseButton from './closeButton.svelte';
+	import { Dropdown, DropdownItem, MenuButton, Input, Radio } from 'flowbite-svelte';
+
 	export let emotionsListed = [];
 	let unsubscribe;
 	onMount(async () => {
@@ -42,13 +42,28 @@
 		}
 		newEmotion = '';
 	}
+
+	async function resetEmotions() {
+		let response = confirm('Are you sure?');
+		if (response) {
+			const filter = '"Thankful, Relaxed, Excited, Mah, Sad, Depressed, Good" !~ text';
+			const records = await pb.collection('emotions').getFullList({
+				filter: filter
+			});
+			console.log('records', records);
+			console.log('record 1', records[0].id);
+			records.forEach(async (record) => {
+				await pb.collection('emotions').delete(record.id);
+			});
+		}
+	}
 </script>
 
 <div class="wrapperModal">
-	<div style="display: flex; margin-bottom:0.5rem; gap:0.8rem;">
-		<button id="buttonDots">...</button>
-		<Dropdown>
-			<DropdownItem>Reset emotions</DropdownItem>
+	<div style="display: flex; margin-bottom:0.5rem; gap:0.8rem; align-items: center;">
+		<MenuButton class="dots-menu dark:text-white" id="btnResetEmotions" />
+		<Dropdown triggeredBy=".dots-menu">
+			<DropdownItem on:click={resetEmotions}>Reset emotions</DropdownItem>
 		</Dropdown>
 		<h2>Manage emotions list</h2>
 	</div>
@@ -76,7 +91,7 @@
 		</div>
 	</div>
 	<div class="wrapperNewEmotion">
-		<input
+		<Input
 			type="text"
 			name="newEmotion"
 			id="newEmotion"
@@ -85,18 +100,9 @@
 			autocomplete="off"
 		/>
 		<div class="wrapperRadio">
-			<label>
-				<input type="radio" bind:group={emotionType} name="type" class="radio" value={0} />
-				Good
-			</label>
-			<label>
-				<input type="radio" bind:group={emotionType} name="type" class="radio" value={1} />
-				Middle
-			</label>
-			<label>
-				<input type="radio" bind:group={emotionType} name="type" class="radio" value={2} />
-				Bad
-			</label>
+			<Radio bind:group={emotionType} name="type" value={0}>Good</Radio>
+			<Radio bind:group={emotionType} name="type" value={1}>Middle</Radio>
+			<Radio bind:group={emotionType} name="type" value={2}>Bad</Radio>
 		</div>
 		<button on:click={saveNewEmotion} id="btnSave">Save</button>
 	</div>
@@ -106,15 +112,6 @@
 	.wrapperRadio {
 		display: flex;
 		flex-direction: column;
-	}
-
-	label {
-		width: max-content;
-	}
-
-	.radio {
-		height: auto;
-		width: auto;
 	}
 
 	.wrapperModal {
@@ -163,13 +160,5 @@
 
 	.is-2 {
 		border-color: orange;
-	}
-
-	#buttonDots {
-		border-radius: 50%;
-		width: 2rem;
-		height: 2rem;
-		padding: 0;
-		margin: 0;
 	}
 </style>

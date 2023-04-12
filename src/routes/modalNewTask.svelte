@@ -7,6 +7,8 @@
 	import SveltyPicker from 'svelty-picker';
 	import { tooltip } from 'svooltip';
 	import { todayReadableFullDate, setupDateTimeForPocketbase } from '$lib/script';
+	import { Input } from 'flowbite-svelte';
+
 	import 'svooltip/styles.css';
 	const { open, close } = getContext('simple-modal');
 
@@ -101,15 +103,15 @@
 </script>
 
 <div class="wrapperModal" id="modalNew">
-	<input
+	<Input
 		type="text"
 		id="taskTitle"
 		placeholder="New task"
 		bind:value={taskTitle}
 		autocomplete="off"
-		use:init
+		autofocus
 	/>
-	<input
+	<Input
 		type="text"
 		id="taskDescription"
 		bind:value={taskDescription}
@@ -179,22 +181,9 @@
 		outline: none;
 	}
 
-	#taskTitle {
-		margin-top: 1.5rem;
-		margin-bottom: 0;
-	}
-
 	#wrapperEditButtons {
 		display: flex;
 		gap: 2rem;
-	}
-
-	#taskDescription {
-		height: 0;
-		line-height: 0;
-		padding-top: 0;
-		padding-bottom: 0;
-		transition: height 0.25s ease;
 	}
 
 	#wrapperAddRepeats {

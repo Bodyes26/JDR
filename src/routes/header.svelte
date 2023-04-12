@@ -1,9 +1,11 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { currentUser } from '$lib/pocketbase';
 </script>
 
 <div id="header">
 	<h1>JDR</h1>
+	<p>Greetings, {$currentUser.name}!</p>
 	<button
 		on:click={() => {
 			goto('/settings');

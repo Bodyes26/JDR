@@ -8,7 +8,9 @@
 	import { tooltip } from 'svooltip';
 	import 'svooltip/styles.css';
 	import { readableDateTime, setupDateTimeForPocketbase } from '$lib/script';
-	const { open, close } = getContext('simple-modal');
+	import { Input } from 'flowbite-svelte';
+
+	const { close } = getContext('simple-modal');
 
 	export let taskTitle = undefined;
 	export let taskDescription = undefined;
@@ -91,10 +93,6 @@
 		}
 	}
 
-	function init(el) {
-		el.focus();
-	}
-
 	async function deleteTask() {
 		var sure = window.confirm('Are you sure?');
 		if (sure) {
@@ -106,15 +104,15 @@
 </script>
 
 <div class="wrapperModal">
-	<input
+	<Input
 		type="text"
 		id="taskTitle"
 		placeholder="New task"
 		bind:value={taskTitle}
 		autocomplete="off"
-		use:init
+		autofocus
 	/>
-	<input
+	<Input
 		type="text"
 		id="taskDescription"
 		bind:value={taskDescription}
@@ -185,22 +183,9 @@
 		gap: 0.2rem;
 	}
 
-	#taskTitle {
-		margin-top: 1.5rem;
-		margin-bottom: 0;
-	}
-
 	#wrapperEditButtons {
 		display: flex;
 		gap: 2rem;
-	}
-
-	#taskDescription {
-		height: 0;
-		line-height: 0;
-		padding-top: 0;
-		padding-bottom: 0;
-		transition: height 0.25s ease;
 	}
 
 	#wrapperAddRepeats {

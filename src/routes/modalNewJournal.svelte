@@ -2,6 +2,8 @@
 	import { getContext, onMount } from 'svelte';
 	import Emotions from './emotionsNewJournal.svelte';
 	import { currentUser, pb } from '$lib/pocketbase';
+	import { Input, Textarea } from 'flowbite-svelte';
+
 	export let positive = undefined;
 	export let vote = undefined;
 	export let description = undefined;
@@ -78,16 +80,12 @@
 		});
 		document.getElementById('positive').focus();
 	});
-
-	function init(el) {
-		el.focus();
-	}
 </script>
 
 <div class="wrapperModal" tabindex="-1" id="modalNew">
 	{#if step == 0}
 		<h1 class="pageTitle">Write a positive thing of today.</h1>
-		<input
+		<Input
 			type="text"
 			name="positive"
 			id="positive"
@@ -101,7 +99,7 @@
 		>
 	{:else if step == 1}
 		<h1 class="pageTitle">What vote would you assigne for today?</h1>
-		<input
+		<Input
 			type="number"
 			name="vote"
 			id="vote"
@@ -109,7 +107,7 @@
 			on:change={emptyVote}
 			placeholder="1 ... 10"
 			autocomplete="off"
-			use:init
+			autofocus
 		/>
 		<div>
 			<button on:click={() => step--}>Back</button>
@@ -128,7 +126,7 @@
 		</div>
 	{:else if step == 3}
 		<h1 class="pageTitle">Write a description for the day.</h1>
-		<textarea
+		<Textarea
 			name="description"
 			id="description"
 			cols="30"
