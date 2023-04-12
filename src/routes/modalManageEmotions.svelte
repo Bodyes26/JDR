@@ -1,6 +1,8 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	import { currentUser, pb } from '$lib/pocketbase';
+	import { Button, Dropdown, DropdownItem, Chevron } from 'flowbite-svelte';
+	import CloseButton from './closeButton.svelte';
 	export let emotionsListed = [];
 	let unsubscribe;
 	onMount(async () => {
@@ -43,7 +45,13 @@
 </script>
 
 <div class="wrapperModal">
-	<h3>Manage emotions list</h3>
+	<div style="display: flex; margin-bottom:0.5rem; gap:0.8rem;">
+		<button id="buttonDots">...</button>
+		<Dropdown>
+			<DropdownItem>Reset emotions</DropdownItem>
+		</Dropdown>
+		<h2>Manage emotions list</h2>
+	</div>
 	<div class="emotionsWrapper">
 		<div class="emotionsGroup">
 			{#each emotionsListed as emotion}
@@ -109,11 +117,6 @@
 		width: auto;
 	}
 
-	h3 {
-		margin: 0;
-		margin-bottom: 0.5rem;
-	}
-
 	.wrapperModal {
 		align-items: flex-start;
 		flex-direction: column;
@@ -160,5 +163,13 @@
 
 	.is-2 {
 		border-color: orange;
+	}
+
+	#buttonDots {
+		border-radius: 50%;
+		width: 2rem;
+		height: 2rem;
+		padding: 0;
+		margin: 0;
 	}
 </style>
