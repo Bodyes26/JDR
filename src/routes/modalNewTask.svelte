@@ -111,7 +111,7 @@
 		/>
 	</div>
 	<div id="taskTime" class="w-full overflow-hidden transition-height duration-200 ease-in">
-		<SveltyPicker inputClasses="form-control" format="dd/mm/yyyy hh:ii" bind:value={date} />
+		<SveltyPicker format="dd/mm/yyyy hh:ii" bind:value={date} />
 	</div>
 
 	<div

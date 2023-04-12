@@ -1,5 +1,5 @@
 <script>
-	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
+	import { onMount, createEventDispatcher } from 'svelte';
 	import { pb } from '$lib/pocketbase';
 	import Task from './task.svelte';
 	import { dateForPocketbase } from '$lib/script';

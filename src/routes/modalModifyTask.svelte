@@ -2,7 +2,6 @@
 	import { currentUser, pb } from '$lib/pocketbase';
 	import { onMount } from 'svelte';
 	import SveltyPicker from 'svelty-picker';
-	import 'svooltip/styles.css';
 	import { readableDateTime, setupDateTimeForPocketbase } from '$lib/script';
 	import { Input, Tooltip, Button } from 'flowbite-svelte';
 
