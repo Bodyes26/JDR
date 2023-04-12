@@ -60,13 +60,6 @@
 </script>
 
 <div class="wrapperModal">
-	<div style="display: flex; margin-bottom:0.5rem; gap:0.8rem; align-items: center;">
-		<MenuButton class="dots-menu dark:text-white" id="btnResetEmotions" />
-		<Dropdown triggeredBy=".dots-menu">
-			<DropdownItem on:click={resetEmotions}>Reset emotions</DropdownItem>
-		</Dropdown>
-		<h2>Manage emotions list</h2>
-	</div>
 	<div class="emotionsWrapper">
 		<div class="emotionsGroup">
 			{#each emotionsListed as emotion}
@@ -105,6 +98,10 @@
 			<Radio bind:group={emotionType} name="type" value={2}>Bad</Radio>
 		</div>
 		<button on:click={saveNewEmotion} id="btnSave">Save</button>
+		<MenuButton class="dots-menu dark:text-white" id="btnResetEmotions" />
+		<Dropdown triggeredBy=".dots-menu">
+			<DropdownItem on:click={resetEmotions}>Reset emotions</DropdownItem>
+		</Dropdown>
 	</div>
 </div>
 
@@ -118,6 +115,7 @@
 		align-items: flex-start;
 		flex-direction: column;
 		gap: 0;
+		padding: 0;
 	}
 
 	.wrapperNewEmotion {

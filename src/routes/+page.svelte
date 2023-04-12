@@ -5,66 +5,67 @@
 	import { goto } from '$app/navigation';
 	import Journal from './journal.svelte';
 	import Tasks from './tasks.svelte';
-	import Modal, { bind } from 'svelte-simple-modal';
 	import ModalNewJournal from './modalNewJournal.svelte';
 	import ModalNewTask from './modalNewTask.svelte';
 	import ModalModifyTask from './modalModifyTask.svelte';
-	import { writable } from 'svelte/store';
-	import CloseButton from './closeButton.svelte';
+	import { Button, Modal, Label, Navbar, NavBrand, NavUl, NavHamburger } from 'flowbite-svelte';
 
 	onMount(() => {
 		if (!$currentUser) {
 			goto('/login');
 		}
 	});
-	const modal = writable(null);
-	const showJournalModal = () => modal.set(ModalNewJournal);
-	const showTaskModal = () => modal.set(ModalNewTask);
-	const showModifyTaskModal = (event) =>
-		modal.set(
-			bind(ModalModifyTask, {
-				id: event.detail.id,
-				taskTitle: event.detail.title,
-				date: event.detail.time,
-				taskDescription: event.detail.description
-			})
-		);
+
+	let showJournalModal = false;
+	let showTaskModal = false;
+	let showModalModifyTask = false;
+	let modifyTaskId;
+	let modifyTaskTitle;
+	let modifyTaskDate;
+	let modifyTaskDesc;
+	const showModifyTaskModal = (event) => {
+		showModalModifyTask = true;
+		modifyTaskId = event.detail.id;
+		modifyTaskTitle = event.detail.title;
+		modifyTaskDate = event.detail.time;
+		modifyTaskDesc = event.detail.description;
+	};
 </script>
 
-<Modal
-	show={$modal}
-	styleWindow={{ backgroundColor: 'transparent', padding: '0' }}
-	closeButton={CloseButton}
->
+<div class="w-full">
 	<Header />
-	<div class="wrapper">
+	<div class="flex gap-4 mt-4 mx-8 flex-wrap">
 		<div class="wrapperTask">
 			<h3>Tasks</h3>
-			<button on:click={showTaskModal}>+ new Task</button>
+			<Button on:click={() => (showTaskModal = true)}>+ new Task</Button>
 			<div class="tasks">
 				<Tasks on:modifyTask={showModifyTaskModal} />
 			</div>
 		</div>
 		<div class="wrapperJournal">
 			<h3>Journal</h3>
-			<button on:click={showJournalModal}>+ new Journal</button>
+			<Button on:click={() => (showJournalModal = true)}>+ new Journal</Button>
 			<Journal />
 		</div>
 	</div>
+</div>
+
+<Modal title="New Task" bind:open={showTaskModal} autoclose={false} class="w-full">
+	<ModalNewTask />
+</Modal>
+<Modal bind:open={showJournalModal} autoclose={false} class="w-full">
+	<ModalNewJournal />
+</Modal>
+<Modal title="Modify Task" bind:open={showModalModifyTask} autoclose={false} class="w-full">
+	<ModalModifyTask
+		taskTitle={modifyTaskTitle}
+		taskDescription={modifyTaskDesc}
+		date={modifyTaskDate}
+		id={modifyTaskId}
+	/>
 </Modal>
 
 <style>
-	.wrapper {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: calc(100% - 4rem);
-		margin-left: 4rem;
-		margin-right: 4rem;
-		gap: 1rem;
-		margin-top: 4rem;
-	}
-
 	.wrapperTask {
 		display: flex;
 		align-items: center;
@@ -82,10 +83,6 @@
 		justify-content: flex-start;
 		height: calc(100vh - 7rem);
 		width: 49%;
-	}
-
-	.wrapperJournal > button {
-		margin-bottom: 1rem;
 	}
 
 	.tasks {

@@ -1,27 +1,22 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { currentUser } from '$lib/pocketbase';
+	import { Button, Navbar, NavBrand, NavUl, NavHamburger } from 'flowbite-svelte';
 </script>
 
-<div id="header">
-	<h1>JDR</h1>
-	<p>Greetings, {$currentUser.name}!</p>
-	<button
-		on:click={() => {
-			goto('/settings');
-		}}>Settings</button
-	>
+<div class="w-full px-24">
+	<Navbar let:hidden let:toggle>
+		<NavBrand>
+			<div class="flex gap-4 items-center">
+				<h1 class="self-center whitespace-nowrap font-semibold dark:text-white">JDR</h1>
+				<p>Greetings, {$currentUser.name}!</p>
+			</div>
+		</NavBrand>
+		<NavHamburger on:click={toggle} />
+		<NavUl {hidden}>
+			<Button href="/settings">Settings</Button>
+		</NavUl>
+	</Navbar>
 </div>
 
 <style>
-	#header {
-		display: flex;
-		justify-content: space-between;
-		height: 4rem;
-		padding-left: 2rem;
-		padding-right: 2rem;
-		width: calc(100% - 4rem);
-		align-items: center;
-		position: absolute;
-	}
 </style>

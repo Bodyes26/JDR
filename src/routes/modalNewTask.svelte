@@ -3,14 +3,13 @@
 	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
 	import TiTime from 'svelte-icons/ti/TiTime.svelte';
 	import TiArrowRepeat from 'svelte-icons/ti/TiArrowRepeat.svelte';
-	import { createEventDispatcher, getContext, onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import SveltyPicker from 'svelty-picker';
 	import { tooltip } from 'svooltip';
 	import { todayReadableFullDate, setupDateTimeForPocketbase } from '$lib/script';
 	import { Input } from 'flowbite-svelte';
 
 	import 'svooltip/styles.css';
-	const { open, close } = getContext('simple-modal');
 
 	export let taskTitle = undefined;
 	export let taskDescription = undefined;
@@ -38,7 +37,6 @@
 			dispatch('createdTask', {
 				date: correctDate
 			});
-			close();
 		} catch (err) {
 			console.log(err);
 		}
@@ -96,9 +94,6 @@
 			showingRepeats = true;
 			document.getElementById('wrapperAddRepeats').style.height = '3rem';
 		}
-	}
-	function init(el) {
-		el.focus();
 	}
 </script>
 

@@ -9,7 +9,6 @@
 	export let description = undefined;
 	let emotionsSelected = [];
 	let step = 0;
-	const { open, close } = getContext('simple-modal');
 	export async function saveJournal() {
 		console.log('emotions selected', emotionsSelected);
 		try {

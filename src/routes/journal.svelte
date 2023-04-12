@@ -1,10 +1,9 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import Emotions from './emotions.svelte';
 	import { pb } from '$lib/pocketbase';
 	import { dateForPocketbase, readableDateTime } from '$lib/script';
 	let journals = [];
-	let unsubscribe;
 
 	onMount(async () => {
 		const day1 = dateForPocketbase('today');

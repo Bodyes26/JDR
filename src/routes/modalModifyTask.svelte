@@ -3,14 +3,12 @@
 	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
 	import TiTime from 'svelte-icons/ti/TiTime.svelte';
 	import TiArrowRepeat from 'svelte-icons/ti/TiArrowRepeat.svelte';
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import SveltyPicker from 'svelty-picker';
 	import { tooltip } from 'svooltip';
 	import 'svooltip/styles.css';
 	import { readableDateTime, setupDateTimeForPocketbase } from '$lib/script';
 	import { Input } from 'flowbite-svelte';
-
-	const { close } = getContext('simple-modal');
 
 	export let taskTitle = undefined;
 	export let taskDescription = undefined;
@@ -39,7 +37,6 @@
 			};
 			console.log(data);
 			const record = await pb.collection('tasks').update(id, data);
-			close();
 		} catch (err) {
 			console.log(err);
 		}
@@ -99,7 +96,6 @@
 			console.log('delete');
 			await pb.collection('tasks').delete(id);
 		}
-		close();
 	}
 </script>
 
