@@ -84,7 +84,9 @@
 
 <div class="h-full flex flex-col gap-8 items-center p-8 outline-none" tabindex="-1" id="modalNew">
 	{#if step == 0}
-		<h1 class="m-0">Write a positive thing of today.</h1>
+		<h1 class="m-0 text-5xl text-blueGray-800 dark:text-white dark:opacity-90">
+			Write a positive thing of today.
+		</h1>
 		<Input
 			type="text"
 			name="positive"
@@ -116,7 +118,9 @@
 			></Button
 		>
 	{:else if step == 1}
-		<h1 class="m-0">What vote would you assigne for today?</h1>
+		<h1 class="m-0 text-5xl text-blueGray-800 dark:text-white dark:opacity-90">
+			What vote would you assigne for today?
+		</h1>
 		<Input
 			type="number"
 			name="vote"
@@ -151,7 +155,9 @@
 			>
 		</div>
 	{:else if step == 2}
-		<h1 class="m-0">Select the emotions that you felt today.</h1>
+		<h1 class="m-0 text-5xl text-blueGray-800 dark:text-white dark:opacity-90">
+			Select the emotions that you felt today.
+		</h1>
 		<Emotions bind:selected={emotionsSelected} />
 		<div class="flex gap-2">
 			<Button color="alternative" on:click={() => step--}>Back</Button>
@@ -177,7 +183,9 @@
 			>
 		</div>
 	{:else if step == 3}
-		<h1 class="m-0">Write a description for the day.</h1>
+		<h1 class="m-0 text-5xl text-blueGray-800 dark:text-white dark:opacity-90">
+			Write a description for the day.
+		</h1>
 		<Textarea
 			name="description"
 			id="description"

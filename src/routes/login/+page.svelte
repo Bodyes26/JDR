@@ -106,7 +106,11 @@
 </script>
 
 <div class="w-full mt-24">
-	<h1 class="w-full text-center">Journaling done right</h1>
+	<h1
+		class="w-full text-center text-5xl text-blueGray-800 text-gray-900 dark:text-white dark:opacity-90"
+	>
+		Journaling done right
+	</h1>
 	<div class="flex justify-center">
 		<form
 			class="flex flex-col justify-center items-center py-4 gap-2 w-3/5"

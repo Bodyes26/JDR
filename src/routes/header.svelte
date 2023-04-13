@@ -7,7 +7,11 @@
 	<Navbar let:hidden let:toggle>
 		<NavBrand class="hover:cursor-default">
 			<div class="flex gap-4 items-center">
-				<h1 class="self-center whitespace-nowrap font-semibold dark:text-white">JDR</h1>
+				<h1
+					class="self-center whitespace-nowrap font-semibold text-5xl text-blueGray-800 dark:text-white dark:opacity-90"
+				>
+					JDR
+				</h1>
 				<p class="text-black dark:text-white hover:cursor-default">
 					Greetings, {$currentUser.name}!
 				</p>
