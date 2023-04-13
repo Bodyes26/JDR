@@ -30,12 +30,25 @@
 		modifyTaskDate = event.detail.time;
 		modifyTaskDesc = event.detail.description;
 	};
+
+	function updateTasks() {
+		showTaskModal = false;
+		showModalModifyTask = false;
+		open('/', '_self');
+	}
+
+	function updateJournals() {
+		showJournalModal = false;
+		open('/', '_self');
+	}
 </script>
 
 <div class="w-full">
 	<Header />
-	<div class="flex gap-4 mt-4 mx-8 flex-wrap">
-		<div class="wrapperTask">
+	<div class="grid gap-4 grid-cols-2 grid-rows-1 px-24 h-5/6">
+		<div
+			class="flex items-center flex-col justify-start border-r-2 border-solid border-black border-opacity-20"
+		>
 			<h3>Tasks</h3>
 			<Button color="alternative" on:click={() => (showTaskModal = true)}
 				><svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +89,7 @@
 				<Tasks on:modifyTask={showModifyTaskModal} />
 			</div>
 		</div>
-		<div class="wrapperJournal">
+		<div class="flex items-center flex-col justify-start">
 			<h3>Journal</h3>
 			<Button color="alternative" on:click={() => (showJournalModal = true)}>
 				<svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -119,10 +132,10 @@
 </div>
 
 <Modal bind:open={showTaskModal} autoclose={false} class="w-full">
-	<ModalNewTask />
+	<ModalNewTask on:createdTask={updateTasks} />
 </Modal>
 <Modal bind:open={showJournalModal} autoclose={false} class="w-full">
-	<ModalNewJournal />
+	<ModalNewJournal on:createdJournal={updateJournals} />
 </Modal>
 <Modal bind:open={showModalModifyTask} autoclose={false} class="w-full">
 	<ModalModifyTask
@@ -130,26 +143,6 @@
 		taskDescription={modifyTaskDesc}
 		date={modifyTaskDate}
 		id={modifyTaskId}
+		on:updatedTask={updateTasks}
 	/>
 </Modal>
-
-<style>
-	.wrapperTask {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: flex-start;
-		height: calc(100vh - 7rem);
-		width: 49%;
-		border-right: 2px solid rgba(0, 0, 0, 0.2);
-	}
-
-	.wrapperJournal {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: flex-start;
-		height: calc(100vh - 7rem);
-		width: 49%;
-	}
-</style>

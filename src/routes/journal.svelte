@@ -29,53 +29,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
 
-<div class="journals">
+<div class="flex flex-row flex-wrap justify-center w-full gap-4 h-full mt-6">
 	{#each journals as journal (journal.id)}
-		<div class="journal">
-			<p class="datetime">{readableDateTime(journal.created)}</p>
-			<div class="voteTitle">
-				<p class="title">~ {journal.title}</p>
+		<div
+			class="relative bg-gray-100 h-fit rounded-lg pt-2 flex flex-wrap flex-col gap-0 w-full pb-2 dark:bg-gray-900"
+		>
+			<p class="ml-4 mb-0 font-bold text-xs">{readableDateTime(journal.created)}</p>
+			<div class="ml-4 flex flex-row justify-between items-center">
+				<p class="italic text-lg">~ {journal.title}</p>
 				<p class="vote">{journal.vote}</p>
 			</div>
-			<p class="emotions"><Emotions emotions={journal.emotion} /></p>
-			<p class="description">{journal.description}</p>
+			<p class="ml-4 mb-2"><Emotions emotions={journal.emotion} /></p>
+			<p class="ml-2 p-2 rounded-lg mr-2 bg-black bg-opacity-10 dark:bg-white">
+				{journal.description}
+			</p>
 		</div>
 	{/each}
 </div>
-
-<style>
-	.datetime {
-		margin-left: 1rem;
-		margin-bottom: 0;
-		font-weight: 700;
-		font-size: small;
-	}
-
-	.emotions {
-		margin-left: 1rem;
-		margin-bottom: 0.5rem;
-	}
-
-	.title {
-		font-style: italic;
-		font-size: 18px;
-	}
-
-	.voteTitle {
-		margin-left: 1rem;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.journals {
-		gap: 1rem;
-		height: 100%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		width: 100%;
-	}
-</style>

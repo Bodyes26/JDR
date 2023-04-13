@@ -26,15 +26,15 @@
 			selected = temp;
 			document.getElementById(id).classList.remove('selected');
 		}
-		console.log(selected);
+		document.getElementById(id).blur();
 	}
 </script>
 
-<div class="emotionsWrapper">
+<div class="flex flex-wrap gap-1">
 	{#each emotionsListed as emotion}
 		{#if emotion.value == 0}
 			<button
-				class="singleEmotion is-0"
+				class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-lime-500"
 				on:click|preventDefault={() => updateSelected(emotion.id)}
 				id={emotion.id}
 			>
@@ -42,7 +42,7 @@
 			</button>
 		{:else if emotion.value == 1}
 			<button
-				class="singleEmotion is-1"
+				class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-gray-500"
 				on:click|preventDefault={() => updateSelected(emotion.id)}
 				id={emotion.id}
 			>
@@ -50,7 +50,7 @@
 			</button>
 		{:else if emotion.value == 2}
 			<button
-				class="singleEmotion is-2"
+				class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-orange-400"
 				on:click|preventDefault={() => updateSelected(emotion.id)}
 				id={emotion.id}
 			>
@@ -62,36 +62,6 @@
 </div>
 
 <style>
-	button:focus,
-	button:focus-visible {
-		outline: 0;
-	}
-
-	.emotionsWrapper {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.2rem;
-	}
-
-	.singleEmotion {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		border: 2px solid;
-		border-radius: 8px;
-		background-color: transparent;
-		transition: background-color 0.25s ease;
-	}
-
-	.is-0 {
-		border-color: greenyellow;
-	}
-	.is-1 {
-		border-color: gray;
-	}
-	.is-2 {
-		border-color: orange;
-	}
-
 	.selected {
 		background-color: lightgray;
 	}

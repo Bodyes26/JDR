@@ -40,7 +40,8 @@
 		const day2 = dateForPocketbase('tomorrow');
 		const filter = " done = false && duetime > '" + day1 + "' && duetime < '" + day2 + "'";
 		const resultList = await pb.collection('tasks').getList(1, 50, {
-			filter: filter
+			filter: filter,
+			sort: 'duetime'
 		});
 		todayTasks = resultList.items;
 	}
@@ -50,7 +51,8 @@
 		const day2 = dateForPocketbase('afterTomorrow');
 		const filter = " done = false && duetime > '" + day1 + "' && duetime < '" + day2 + "'";
 		const resultList = await pb.collection('tasks').getList(1, 50, {
-			filter: filter
+			filter: filter,
+			sort: 'duetime'
 		});
 		tomorrowTasks = resultList.items;
 	}

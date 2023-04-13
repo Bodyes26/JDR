@@ -110,7 +110,7 @@
 			autocomplete="off"
 		/>
 	</div>
-	<div id="taskTime" class="w-full overflow-hidden transition-height duration-200 ease-in">
+	<div id="taskTime" class="h-0 py-0 w-full overflow-hidden transition-height duration-200 ease-in">
 		<SveltyPicker format="dd/mm/yyyy hh:ii" bind:value={date} />
 	</div>
 

@@ -1,7 +1,7 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
 	import { currentUser, pb } from '$lib/pocketbase';
-	import { Dropdown, DropdownItem, MenuButton, Input, Radio } from 'flowbite-svelte';
+	import { Dropdown, DropdownItem, MenuButton, Input, Radio, Button } from 'flowbite-svelte';
 
 	export let emotionsListed = [];
 	let unsubscribe;
@@ -59,31 +59,43 @@
 	}
 </script>
 
-<div class="wrapperModal">
-	<div class="emotionsWrapper">
-		<div class="emotionsGroup">
+<div class="flex flex-col items-start gap-0 p-0">
+	<div class="flex flex-col gap-1 mb-4">
+		<div class="flex flex-row flex-wrap gap-1">
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 0}
-					<div class="singleEmotion is-0">{emotion.text}</div>
+					<div
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-lime-500"
+					>
+						{emotion.text}
+					</div>
 				{/if}
 			{/each}
 		</div>
-		<div class="emotionsGroup">
+		<div class="flex flex-row flex-wrap gap-1">
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 1}
-					<div class="singleEmotion is-1">{emotion.text}</div>
+					<div
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-gray-400"
+					>
+						{emotion.text}
+					</div>
 				{/if}
 			{/each}
 		</div>
-		<div class="emotionsGroup">
+		<div class="flex flex-row flex-wrap gap-1">
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 2}
-					<div class="singleEmotion is-2">{emotion.text}</div>
+					<div
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-orange-400"
+					>
+						{emotion.text}
+					</div>
 				{/if}
 			{/each}
 		</div>
 	</div>
-	<div class="wrapperNewEmotion">
+	<div class="flex flex-row w-full gap-4 items-center">
 		<Input
 			type="text"
 			name="newEmotion"
@@ -92,71 +104,15 @@
 			bind:value={newEmotion}
 			autocomplete="off"
 		/>
-		<div class="wrapperRadio">
+		<div class="flex flex-col">
 			<Radio bind:group={emotionType} name="type" value={0}>Good</Radio>
 			<Radio bind:group={emotionType} name="type" value={1}>Middle</Radio>
 			<Radio bind:group={emotionType} name="type" value={2}>Bad</Radio>
 		</div>
-		<button on:click={saveNewEmotion} id="btnSave">Save</button>
+		<Button outline on:click={saveNewEmotion} id="btnSave">Save</Button>
 		<MenuButton class="dots-menu dark:text-white" id="btnResetEmotions" />
 		<Dropdown triggeredBy=".dots-menu">
 			<DropdownItem on:click={resetEmotions}>Reset emotions</DropdownItem>
 		</Dropdown>
 	</div>
 </div>
-
-<style>
-	.wrapperRadio {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.wrapperModal {
-		align-items: flex-start;
-		flex-direction: column;
-		gap: 0;
-		padding: 0;
-	}
-
-	.wrapperNewEmotion {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		gap: 1rem;
-		align-items: center;
-	}
-
-	.emotionsWrapper {
-		display: flex;
-		flex-direction: column;
-		gap: 0.2rem;
-		margin-bottom: 1rem;
-	}
-
-	.emotionsGroup {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 0.2rem;
-	}
-
-	.singleEmotion {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		border: 2px solid;
-		border-radius: 8px;
-		width: min-content;
-	}
-
-	.is-0 {
-		border-color: greenyellow;
-	}
-
-	.is-1 {
-		border-color: gray;
-	}
-
-	.is-2 {
-		border-color: orange;
-	}
-</style>

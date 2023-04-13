@@ -1,7 +1,6 @@
 <script>
 	import { currentUser, pb } from '$lib/pocketbase';
 	import { createEventDispatcher, onMount } from 'svelte';
-	import FaRegEdit from 'svelte-icons/fa/FaRegEdit.svelte';
 	export let title;
 	export let id;
 	export let dateTime = undefined;
@@ -43,54 +42,69 @@
 	}
 </script>
 
-<div class="task">
-	<div style="display: flex;">
-		<div
-			{id}
-			class="checkbox"
-			on:click={checkTask}
-			on:keydown={checkTask}
-			on:keyup={checkTask}
-			on:keypress={checkTask}
-		/>
+<div class="flex flex-col mb-2">
+	<div class="flex">
+		<div {id} class="checkbox" on:click={checkTask} on:keydown={checkTask} />
 		{#if time}
-			<p class="time">{time}</p>
+			<p class="text-xs opacity-80 m-0 mr-2 mt-1 relative w-9 font-mono">{time}</p>
 		{/if}
 		<p
 			on:click={modifyTask}
 			on:keydown={modifyTask}
-			on:keyup={modifyTask}
-			on:keypress={modifyTask}
 			on:mouseenter={showEdit}
 			on:mouseleave={hideEdit}
-			class="title"
+			class="hover:cursor-pointer w-4/5 max-w-fit"
 		>
 			{title}
 		</p>
-		<div class="modify" id="edit_{id}"><FaRegEdit /></div>
+		<div
+			class=" ml-2 opacity-0 w-6 h-6 transition-opacity duration-200 ease-in hover:opacity-100 hover:cursor-pointer"
+			id="edit_{id}"
+		>
+			<svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<title />
+
+				<g id="Complete">
+					<g id="edit">
+						<g>
+							<path
+								d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8"
+								fill="none"
+								stroke="#000000"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+							/>
+
+							<polygon
+								fill="none"
+								points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8"
+								stroke="#000000"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+							/>
+						</g>
+					</g>
+				</g>
+			</svg>
+		</div>
 		<div class="selected" style="display: hidden;" />
 	</div>
 	{#if description}
-		<div>
-			<p class="taskDescription">{description}</p>
-		</div>
+		{#if time}
+			<div class="ml-16 pl-2">
+				<p class="text-xs w-4/5 max-w-fit">{description}</p>
+			</div>
+		{:else}
+			<div class="ml-8">
+				<p class="text-xs w-4/5 max-w-fit">{description}</p>
+			</div>
+		{/if}
 	{/if}
 </div>
 
 <style>
-	.modify {
-		margin-left: 0.5rem;
-		opacity: 0;
-		width: 1.5rem;
-		height: 1.5rem;
-		transition: opacity 0.25s ease;
-	}
-
-	.modify:hover {
-		opacity: 1;
-		cursor: pointer;
-	}
-
 	.checkbox {
 		margin-top: 2px;
 		height: 20px;
@@ -101,41 +115,11 @@
 		border: 2px solid rgba(255, 255, 255, 0.2);
 	}
 
-	p {
-		margin: 0;
-		width: 80%;
-		max-width: fit-content;
-		font-size: large;
-	}
-
 	.checkbox:hover {
-		cursor: pointer;
-	}
-
-	.title:hover {
 		cursor: pointer;
 	}
 
 	.selected {
 		background-color: aqua;
-	}
-
-	.task {
-		display: flex;
-		margin-bottom: 0.4rem;
-		flex-direction: column;
-	}
-
-	.time {
-		font-size: small;
-		opacity: 0.8;
-		margin-right: 0.5rem;
-		margin-top: 4px;
-	}
-
-	.taskDescription {
-		margin-left: 4rem;
-		padding-left: 1rem;
-		font-size: small;
 	}
 </style>

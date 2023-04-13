@@ -1,9 +1,10 @@
 <script>
 	import { currentUser, pb } from '$lib/pocketbase';
-	import { onMount } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import SveltyPicker from 'svelty-picker';
 	import { readableDateTime, setupDateTimeForPocketbase } from '$lib/script';
 	import { Input, Tooltip, Button } from 'flowbite-svelte';
+	const dispatch = createEventDispatcher();
 
 	export let taskTitle = undefined;
 	export let taskDescription = undefined;
@@ -32,6 +33,7 @@
 			};
 			console.log(data);
 			const record = await pb.collection('tasks').update(id, data);
+			dispatch('updatedTask', {});
 		} catch (err) {
 			console.log(err);
 		}
