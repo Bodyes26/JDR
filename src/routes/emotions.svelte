@@ -18,11 +18,17 @@
 <div class="flex flex-wrap gap-1">
 	{#each emotionsListed as emotion}
 		{#if emotion.value == 0}
-			<div class="px-2 border-2 border-solid rounded-lg border-lime-500">{emotion.text}</div>
+			<div class="px-2 border-2 border-solid rounded-lg border-lime-500 dark:text-white">
+				{emotion.text}
+			</div>
 		{:else if emotion.value == 1}
-			<div class="px-2 border-2 border-solid rounded-lg border-gray-400">{emotion.text}</div>
+			<div class="px-2 border-2 border-solid rounded-lg border-gray-400 dark:text-white">
+				{emotion.text}
+			</div>
 		{:else if emotion.value == 2}
-			<div class="px-2 border-2 border-solid rounded-lg is-2 border-orange-400">{emotion.text}</div>
+			<div class="px-2 border-2 border-solid rounded-lg is-2 border-orange-400 dark:text-white">
+				{emotion.text}
+			</div>
 		{/if}
 	{/each}
 </div>

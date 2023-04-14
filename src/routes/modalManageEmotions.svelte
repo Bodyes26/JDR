@@ -65,7 +65,7 @@
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 0}
 					<div
-						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-lime-500"
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-lime-500 dark:text-white"
 					>
 						{emotion.text}
 					</div>
@@ -76,7 +76,7 @@
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 1}
 					<div
-						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-gray-400"
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-gray-400 dark:text-white"
 					>
 						{emotion.text}
 					</div>
@@ -87,7 +87,7 @@
 			{#each emotionsListed as emotion}
 				{#if emotion.value == 2}
 					<div
-						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-orange-400"
+						class="px-2 py-1 border-2 border-solid rounded-lg bg-transparent transition-colors duration-200 ease-in border-orange-400 dark:text-white"
 					>
 						{emotion.text}
 					</div>

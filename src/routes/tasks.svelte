@@ -14,25 +14,25 @@
 		loadTomorrow();
 		loadNoDate();
 		dateForPocketbase('today');
-		pb.collection('tasks').subscribe('*', async ({ action, record }) => {
-			const today = new Date();
-			const tomorrow = new Date();
-			const dayAftertomorrow = new Date();
-			tomorrow.setDate(today.getDate() + 1);
-			dayAftertomorrow.setDate(tomorrow.getDate() + 1);
-			if (action === 'create') {
-				if (record.duetime < tomorrow && record.duetime > today) {
-					todayTasks = [...todayTasks, record];
-				} else if (record.duetime >= tomorrow && record.duetime < dayAftertomorrow) {
-					tomorrowTasks = [...tomorrowTasks, record];
-				} else if (record.duetime == '') {
-					tasksNoDate = [...tasksNoDate, record];
-				}
-			}
-			if (action === 'delete') {
-				tasksNoDate = tasksNoDate.filter((m) => m.id !== record.id);
-			}
-		});
+		// pb.collection('tasks').subscribe('*', async ({ action, record }) => {
+		// 	const today = new Date();
+		// 	const tomorrow = new Date();
+		// 	const dayAftertomorrow = new Date();
+		// 	tomorrow.setDate(today.getDate() + 1);
+		// 	dayAftertomorrow.setDate(tomorrow.getDate() + 1);
+		// 	if (action === 'create') {
+		// 		if (record.duetime < tomorrow && record.duetime > today) {
+		// 			todayTasks = [...todayTasks, record];
+		// 		} else if (record.duetime >= tomorrow && record.duetime < dayAftertomorrow) {
+		// 			tomorrowTasks = [...tomorrowTasks, record];
+		// 		} else if (record.duetime == '') {
+		// 			tasksNoDate = [...tasksNoDate, record];
+		// 		}
+		// 	}
+		// 	if (action === 'delete') {
+		// 		tasksNoDate = tasksNoDate.filter((m) => m.id !== record.id);
+		// 	}
+		// });
 	});
 
 	async function loadToday() {
@@ -100,7 +100,7 @@
 	}
 
 	function removeChecked() {
-		document.querySelectorAll('.checkbox').forEach((button) => {
+		document.querySelectorAll('.rounded-md').forEach((button) => {
 			console.log('button ', button);
 			button.classList.remove('selected');
 		});
@@ -116,10 +116,10 @@
 	}
 </script>
 
-<div class="tasks">
+<div class="flex flex-col justify-center w-full gap-3">
 	<div id="wrapperToday">
 		{#if todayTasks.length > 0}
-			<h3>Today</h3>
+			<h3 class="dark:text-white">Today</h3>
 			{#each todayTasks as task}
 				<Task
 					title={task.title}
@@ -134,7 +134,7 @@
 	</div>
 	<div id="wrapperTomorrow">
 		{#if tomorrowTasks.length > 0}
-			<h3>Tomorrow</h3>
+			<h3 class="dark:text-white">Tomorrow</h3>
 			{#each tomorrowTasks as task}
 				<Task
 					title={task.title}
@@ -149,7 +149,7 @@
 	</div>
 	<div id="wrapperNoDates">
 		{#if tasksNoDate.length > 0}
-			<h3>Anytime</h3>
+			<h3 class="dark:text-white">Anytime</h3>
 			{#each tasksNoDate as task}
 				<Task
 					title={task.title}
@@ -163,13 +163,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.tasks {
-		gap: 0.8rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-	}
-</style>

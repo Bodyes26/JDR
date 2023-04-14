@@ -32,15 +32,19 @@
 <div class="flex flex-row flex-wrap justify-center w-full gap-4 h-full mt-6">
 	{#each journals as journal (journal.id)}
 		<div
-			class="relative bg-gray-100 h-fit rounded-lg pt-2 flex flex-wrap flex-col gap-0 w-full pb-2 dark:bg-gray-900"
+			class="relative bg-gray-100 h-fit rounded-lg pt-2 flex flex-wrap flex-col gap-0 w-full pb-2 dark:bg-neutral-900"
 		>
-			<p class="ml-4 mb-0 font-bold text-xs">{readableDateTime(journal.created)}</p>
+			<p class="ml-4 mb-0 font-bold text-xs dark:text-white dark:opacity-70">
+				{readableDateTime(journal.created)}
+			</p>
 			<div class="ml-4 flex flex-row justify-between items-center">
-				<p class="italic text-lg">~ {journal.title}</p>
-				<p class="vote">{journal.vote}</p>
+				<p class="italic text-lg dark:text-white">~ {journal.title}</p>
+				<p class="vote dark:text-white">{journal.vote}</p>
 			</div>
 			<p class="ml-4 mb-2"><Emotions emotions={journal.emotion} /></p>
-			<p class="ml-2 p-2 rounded-lg mr-2 bg-black bg-opacity-10 dark:bg-white">
+			<p
+				class="ml-2 p-2 rounded-lg mr-2 bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10 dark:text-white"
+			>
 				{journal.description}
 			</p>
 		</div>

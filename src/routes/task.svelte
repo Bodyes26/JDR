@@ -44,16 +44,21 @@
 
 <div class="flex flex-col mb-2">
 	<div class="flex">
-		<div {id} class="checkbox" on:click={checkTask} on:keydown={checkTask} />
+		<div
+			{id}
+			class="mt-1 h-5 w-5 rounded-md mr-2 transition-colors ease-in duration-200 border-solid border-2 hover:cursor-pointer border-black border-opacity-20 dark:border-white dark:border-opacity-20"
+			on:click={checkTask}
+			on:keydown={checkTask}
+		/>
 		{#if time}
-			<p class="text-xs opacity-80 m-0 mr-2 mt-1 relative w-9 font-mono">{time}</p>
+			<p class="text-xs opacity-80 m-0 mr-2 mt-1 relative w-9 font-mono dark:text-white">{time}</p>
 		{/if}
 		<p
 			on:click={modifyTask}
 			on:keydown={modifyTask}
 			on:mouseenter={showEdit}
 			on:mouseleave={hideEdit}
-			class="hover:cursor-pointer w-4/5 max-w-fit"
+			class="hover:cursor-pointer w-4/5 max-w-fit dark:text-white"
 		>
 			{title}
 		</p>
@@ -94,31 +99,17 @@
 	{#if description}
 		{#if time}
 			<div class="ml-16 pl-2">
-				<p class="text-xs w-4/5 max-w-fit">{description}</p>
+				<p class="text-xs w-4/5 max-w-fit dark:text-white dark:opacity-80">{description}</p>
 			</div>
 		{:else}
 			<div class="ml-8">
-				<p class="text-xs w-4/5 max-w-fit">{description}</p>
+				<p class="text-xs w-4/5 max-w-fit dark:text-white dark:opacity-80">{description}</p>
 			</div>
 		{/if}
 	{/if}
 </div>
 
 <style>
-	.checkbox {
-		margin-top: 2px;
-		height: 20px;
-		width: 20px;
-		border-radius: 4px;
-		margin-right: 0.5rem;
-		transition: background-color 0.25s ease;
-		border: 2px solid rgba(255, 255, 255, 0.2);
-	}
-
-	.checkbox:hover {
-		cursor: pointer;
-	}
-
 	.selected {
 		background-color: aqua;
 	}
