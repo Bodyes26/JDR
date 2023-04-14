@@ -46,10 +46,30 @@
 	<div class="flex">
 		<div
 			{id}
-			class="mt-1 h-5 w-5 rounded-md mr-2 transition-colors ease-in duration-200 border-solid border-2 hover:cursor-pointer border-black border-opacity-20 dark:border-white dark:border-opacity-20"
+			class="mt-1 h-5 w-5 flex justify-center items-center rounded-md mr-2 transition-colors ease-in duration-200 border-solid border-2 hover:cursor-pointer border-black border-opacity-20 dark:border-white dark:border-opacity-20"
 			on:click={checkTask}
 			on:keydown={checkTask}
-		/>
+		>
+			<svg
+				width="18px"
+				height="18px"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g id="Interface / Check">
+					<path
+						id="Vector"
+						d="M6 12L10.2426 16.2426L18.727 7.75732"
+						stroke="#FFFFFF"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="dark:stroke-neutral-950"
+					/>
+				</g>
+			</svg>
+		</div>
 		{#if time}
 			<p class="text-xs opacity-80 m-0 mr-2 mt-1 relative w-9 font-mono dark:text-white">{time}</p>
 		{/if}

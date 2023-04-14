@@ -108,14 +108,12 @@
 					fill-rule="evenodd"
 					clip-rule="evenodd"
 					d="M3 14a1 1 0 0 1 1-1h12a3 3 0 0 0 3-3V6a1 1 0 1 1 2 0v4a5 5 0 0 1-5 5H4a1 1 0 0 1-1-1z"
-					fill="#0D0D0D"
-					class="dark:fill-white"
+					fill="#FFF"
 				/><path
 					fill-rule="evenodd"
 					clip-rule="evenodd"
 					d="M3.293 14.707a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 1.414L5.414 14l3.293 3.293a1 1 0 1 1-1.414 1.414l-4-4z"
-					fill="#0D0D0D"
-					class="dark:fill-white"
+					fill="#FFF"
 				/></svg
 			></Button
 		>
@@ -146,14 +144,12 @@
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3 14a1 1 0 0 1 1-1h12a3 3 0 0 0 3-3V6a1 1 0 1 1 2 0v4a5 5 0 0 1-5 5H4a1 1 0 0 1-1-1z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/><path
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3.293 14.707a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 1.414L5.414 14l3.293 3.293a1 1 0 1 1-1.414 1.414l-4-4z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/></svg
 				></Button
 			>
@@ -176,14 +172,12 @@
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3 14a1 1 0 0 1 1-1h12a3 3 0 0 0 3-3V6a1 1 0 1 1 2 0v4a5 5 0 0 1-5 5H4a1 1 0 0 1-1-1z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/><path
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3.293 14.707a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 1.414L5.414 14l3.293 3.293a1 1 0 1 1-1.414 1.414l-4-4z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/></svg
 				></Button
 			>
@@ -213,8 +207,7 @@
 				>
 					<path
 						d="M8 17V12H5.6302C4.71068 12 4.27858 10.8635 4.96584 10.2526L10.6713 5.18109C11.429 4.50752 12.571 4.50752 13.3287 5.18109L19.0342 10.2526C19.7214 10.8635 19.2893 12 18.3698 12H16V17C16 18.1046 15.1046 19 14 19H10C8.89543 19 8 18.1046 8 17Z"
-						stroke="#0D0D0D"
-						class="dark:stroke-white"
+						stroke="#FFF"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -230,14 +223,12 @@
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3 14a1 1 0 0 1 1-1h12a3 3 0 0 0 3-3V6a1 1 0 1 1 2 0v4a5 5 0 0 1-5 5H4a1 1 0 0 1-1-1z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/><path
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M3.293 14.707a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 1.414L5.414 14l3.293 3.293a1 1 0 1 1-1.414 1.414l-4-4z"
-						fill="#0D0D0D"
-						class="dark:fill-white"
+						fill="#FFF"
 					/></svg
 				></Button
 			>
