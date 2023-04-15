@@ -131,6 +131,6 @@
 
 <style>
 	.selected {
-		background-color: aqua;
+		background-color: #4eaceb;
 	}
 </style>
