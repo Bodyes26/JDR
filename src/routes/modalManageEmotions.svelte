@@ -36,7 +36,7 @@
 				value: emotionType,
 				user: $currentUser.id
 			};
-			const record = await pb.collection('emotions').create(data);
+			await pb.collection('emotions').create(data);
 		} catch (err) {
 			console.log(err);
 		}
