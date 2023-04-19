@@ -111,11 +111,21 @@
 		/>
 	</div>
 	<div id="taskTime" class="h-0 py-0 w-full overflow-hidden transition-height duration-200 ease-in">
-		<SveltyPicker
-			format="dd/mm/yyyy hh:ii"
-			bind:value={date}
-			inputClasses="dark:bg-gray-600 rounded-lg dark:text-white"
-		/>
+		{#if document.documentElement.classList.contains('dark')}
+			<SveltyPicker
+				format="dd/mm/yyyy hh:ii"
+				bind:value={date}
+				theme="picker-dark"
+				inputClasses="dark:bg-gray-600 rounded-lg dark:text-white"
+			/>
+		{:else}
+			<SveltyPicker
+				format="dd/mm/yyyy hh:ii"
+				bind:value={date}
+				theme="picker-light"
+				inputClasses="dark:bg-gray-600 rounded-lg dark:text-white"
+			/>
+		{/if}
 	</div>
 
 	<div
@@ -200,3 +210,39 @@
 		></Button
 	>
 </div>
+
+<style>
+	:global(.picker-dark) {
+		--sdt-primary: #2c55d3;
+		--sdt-color: #eee;
+		--sdt-color-selected: #eee;
+		--sdt-bg-main: #333;
+		--sdt-bg-today: var(--sdt-primary);
+		--sdt-bg-clear: #dc3545;
+		--sdt-today-bg: #2c55d3;
+		--sdt-today-color: var(--sdt-color-selected);
+		--sdt-clear-color: #dc3545;
+		--sdt-btn-bg-hover: #555;
+		--sdt-btn-header-bg-hover: #555;
+		--sdt-clock-bg: #7b7b7b;
+		--sdt-shadow: #999;
+		--sdt-disabled-date: #b22222;
+	}
+
+	:global(.picker-light) {
+		--sdt-primary: #2c55d3;
+		--sdt-color: #111;
+		--sdt-color-selected: #fff;
+		--sdt-bg-main: #fff;
+		--sdt-bg-today: var(--sdt-primary);
+		--sdt-bg-clear: #dc3545;
+		--sdt-today-bg: #2c55d3;
+		--sdt-today-color: var(--sdt-color-selected);
+		--sdt-clear-color: #dc3545;
+		--sdt-btn-bg-hover: #eee;
+		--sdt-btn-header-bg-hover: #eee;
+		--sdt-clock-bg: #eee;
+		--sdt-shadow: #555;
+		--sdt-disabled-date: #b22222;
+	}
+</style>

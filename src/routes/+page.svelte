@@ -11,6 +11,7 @@
 	import { Button, Modal } from 'flowbite-svelte';
 
 	onMount(() => {
+		Notification.requestPermission();
 		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
 		if (
 			localStorage.getItem('color-theme') === 'dark' ||

@@ -19,13 +19,15 @@
 	}
 	async function update() {
 		try {
-			if (newName == undefined) {
+			console.log('newname', newName);
+			if (newName == '') {
+				console.log('newName undefined');
 				newName = name;
 			}
-			if (newEmail == undefined) {
+			if (newEmail == '') {
 				newEmail = email;
 			}
-			if (password == undefined) {
+			if (password == '') {
 				password = currentPassword;
 				confirmPassword = currentPassword;
 			}
@@ -131,64 +133,76 @@
 		</div>
 	</Navbar>
 
-	<div class="mt-8 grid gap-6">
-		<div>
-			<Label for="name">Change name</Label>
-			<Input
-				type="text"
-				id="name"
-				name="name"
-				placeholder={$currentUser.name}
-				bind:value={newName}
-			/>
-		</div>
-		<div>
-			<Label for="email">Change email</Label>
-			<Input
-				type="email"
-				id="email"
-				name="email"
-				placeholder={$currentUser.email}
-				bind:value={newEmail}
-			/>
-		</div>
-		<div>
-			<Label for="password">Current password</Label>
-			<Input
-				type="password"
-				id="currentPassword"
-				name="currentPassword"
-				placeholder="********"
-				bind:value={currentPassword}
-			/>
-		</div>
-		<div class="grid grid-cols-2 gap-2 w-full">
-			<div class="flex flex-col">
-				<Label for="password">New password</Label>
+	<div class="mt-8 grid gap-4">
+		<Label for="boxInfo">Personal info</Label>
+		<div class="bg-neutral-200 px-16 py-8 rounded-xl flex flex-col gap-4 items-end" id="boxInfo">
+			<div class="w-full">
+				<Label for="name">Change name</Label>
 				<Input
-					type="password"
-					id="password"
-					name="password"
-					placeholder="••••••••"
-					bind:value={password}
+					type="text"
+					id="name"
+					name="name"
+					placeholder={$currentUser.name}
+					bind:value={newName}
 				/>
 			</div>
-			<div class="flex flex-col">
-				<Label for="confirmPassword">Confirm password</Label>
+			<div class="w-full">
+				<Label for="email">Change email</Label>
 				<Input
-					type="password"
-					id="confirmPassword"
-					bind:value={confirmPassword}
-					name="confirmPassword"
-					placeholder="••••••••"
+					type="email"
+					id="email"
+					name="email"
+					placeholder={$currentUser.email}
+					bind:value={newEmail}
 				/>
 			</div>
+			<Button on:click={update}>Save</Button>
 		</div>
+
+		<Label for="boxPassword">Change Password</Label>
+		<div
+			class="bg-neutral-200 px-16 py-8 rounded-xl flex flex-col gap-4 items-end"
+			id="boxPassword"
+		>
+			<div class="w-full">
+				<Label for="password">Current password</Label>
+				<Input
+					type="password"
+					id="currentPassword"
+					name="currentPassword"
+					placeholder="••••••••"
+					bind:value={currentPassword}
+				/>
+			</div>
+			<div class="grid grid-cols-2 gap-2 w-full">
+				<div class="flex flex-col">
+					<Label for="password">New password</Label>
+					<Input
+						type="password"
+						id="password"
+						name="password"
+						placeholder="••••••••"
+						bind:value={password}
+					/>
+				</div>
+				<div class="flex flex-col">
+					<Label for="confirmPassword">Confirm password</Label>
+					<Input
+						type="password"
+						id="confirmPassword"
+						bind:value={confirmPassword}
+						name="confirmPassword"
+						placeholder="••••••••"
+					/>
+				</div>
+			</div>
+			<Button on:click={update}>Save</Button>
+		</div>
+
 		<div>
-			<Button color="light" on:click={update}>Update data</Button>
 			<Button color="light" on:click={() => (showModal = true)}>Manage emotions</Button>
 		</div>
-		<div>
+		<div class="mb-8">
 			<Button color="red" on:click={signOut}>Sign Out</Button>
 		</div>
 	</div>

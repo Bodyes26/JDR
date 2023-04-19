@@ -6,6 +6,8 @@
 	export let dateTime = undefined;
 	export let description = undefined;
 	let time;
+	let appointmentDate = new Date();
+	let isNotified = false;
 	const dispatch = createEventDispatcher();
 	async function checkTask() {
 		try {
@@ -23,8 +25,31 @@
 		document.getElementById(id).classList.remove('selected');
 		if (dateTime) {
 			time = dateTime.substring(11, 16);
+			const task = { title: title, description: description, time: dateTime };
+			appointmentDate = new Date(dateTime).getTime();
+			// Schedule notification if appointment is within 24 hours
+			const oneDay = 24 * 60 * 60 * 1000; // Milliseconds in one day
+			const timeDiff = appointmentDate - Date.now() - 7200000;
+			console.log(timeDiff);
+			if (timeDiff > 0 && timeDiff < oneDay) {
+				registerNotification(timeDiff);
+			}
 		}
 	});
+
+	function registerNotification(timeDiff) {
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.getRegistration().then(function (registration) {
+				registration.showNotification(title, {
+					body: description,
+					vibrate: [200, 100, 200],
+					time: timeDiff
+				});
+				registration.pushManager();
+				isNotified = true;
+			});
+		}
+	}
 
 	function modifyTask() {
 		dispatch('modifyTask', {

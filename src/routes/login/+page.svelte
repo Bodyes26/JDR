@@ -145,6 +145,16 @@
 			}
 		});
 	}
+
+	function checkEnter(e) {
+		if (e.keyCode === 13) {
+			if (signup) {
+				signUp();
+			} else {
+				login();
+			}
+		}
+	}
 </script>
 
 <div class="absolute top-8 right-8">
@@ -204,6 +214,7 @@
 						id="confirmPassword"
 						placeholder="confirm password"
 						bind:value={confirmPassword}
+						on:keypress={checkEnter}
 					/>
 				</div>
 			{:else}
@@ -213,6 +224,7 @@
 					id="password"
 					placeholder="Password"
 					bind:value={password}
+					on:keypress={checkEnter}
 				/>
 			{/if}
 			<Hr class="my-8" height="h-px" />
